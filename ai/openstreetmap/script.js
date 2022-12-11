@@ -1,9 +1,33 @@
+
+
+
+var coordList;
+var myIcon;
+
+
+
+function preload() {
+    // var url = "https://api.openbrewerydb.org/breweries?by_city=san_diego&per_page=50"
+    // https://api.openbrewerydb.org/breweries?by_city=chicago
+    
+    var url = "data/coordinates.json"
+    
+  
+    loadJSON(url, gotData);
+
+}
+
+function gotData(data) {
+    coordList = data;
+  }
+
+
 function setup() {
     // create the canvas for the map
     var canvas = createCanvas(800, 600);
     canvas.parent('map');
   
-
+    // see package: https://leafletjs.com/download.html
     // The latitude of Helsinki, Finland is 60.192059, and the longitude is 24.945831.
 
     // create the Leaflet map
@@ -12,6 +36,14 @@ function setup() {
     //  attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
     //  maxZoom: 18
     //}).addTo(map);
+
+
+    myIcon = L.icon({
+        iconUrl: 'data/s1.png',
+        iconSize:     [37], // size of the icon
+        iconAnchor:   [20, 59], // point of the icon which will correspond to marker's location
+        popupAnchor:  [-12, -56] // point from which the popup should open relative to the iconAnchor
+      });
 
 
     L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
@@ -26,6 +58,25 @@ function setup() {
 
     // map.setView([51.505, -0.09], 13);
 
+
+
+
+     // toimii L.marker([60.1920, 24.9458], {icon: myIcon}).addTo(map).bindPopup("testi");
+
+       
+  for (i = 0; i < coordList.length; i++) {
+    lat = coordList[i].latitude;
+    long = coordList[i].longitude;
+    name = coordList[i].name;
+    web = coordList[i].website_url;
+    print(lat, long);
+    print(web);
+    
+    if (long != null) {
+     L.marker([lat, long], {icon: myIcon}).addTo(map).bindPopup(name  + '<br>' + web);
+    }
+  }
+
   }
   
   function draw() {
@@ -38,4 +89,17 @@ function setup() {
 
     // p5: https://editor.p5js.org/haques/sketches/5kH03sdnC ... kopio - katso vinkkeja
      
+    // drawEllipse();
+
+   
+
+
+  }
+
+  function drawEllipse() {
+    // draw an animated ellipse on the map
+    var x = random(width);
+    var y = random(height);
+    ellipse(x,y,10,10); // menee taustalla.. eli voisi olla erillinen kanvas kartan alapuolella
+
   }
