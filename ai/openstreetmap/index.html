@@ -3,7 +3,11 @@
   <head>
     <title>My p5.js Map</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.min.js"></script>
-    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+    
+    <!-- integrity from: https://leafletjs.com/download.html-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+
   </head>
   <body>
 
@@ -12,6 +16,16 @@
     <div id="map"></div> 
     
     <!--  
+
+Integrity added: see e.g.
+
+https://www.educative.io/answers/how-to-use-leafletjs-to-integrate-maps-in-javascript
+
+
+
+
+<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+
       If the map tiles are not shown correctly on a Leaflet map, there are a few potential causes for this issue.
 
 First, make sure that you have correctly included the leaflet.js library in your HTML page and that you are using the correct URL for the map tiles. The leaflet.js library must be included in your page before you create the map, and the URL for the map tiles should be in the format https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png, where {s} is the server name, {z} is the zoom level, {x} is the x-coordinate, and {y} is the y-coordinate.
