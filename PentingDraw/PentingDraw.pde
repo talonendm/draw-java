@@ -1,7 +1,13 @@
 /**
  NOTE: this is more "like" having fun project by implementing different features than writing a clean code for carefully designed UI/UX. 
+
+See blog post: https://talonendm.github.io/2021-04-03-draw/ 
  
- */
+ Error in Processing 4.
+ 
+ tested with 3.5.4 and it works with Huion tablet
+ 
+*/
 
 
 // -------------------------------------------
@@ -10,6 +16,11 @@ import codeanticode.tablet.*; // # * Basic Drawing with Tablet: # * by Andres Co
 // import java.util.*;
 // import java.util.Arrays;
 import java.util.Collections; // https://forum.processing.org/two/discussion/626/cannot-find-anything-named-collections-arraylist
+
+// 2/2023
+// https://processing.org/reference/libraries/svg/index.html 
+import processing.svg.*;
+
 
 // -------------------------------------------
 Tablet tablet;
@@ -80,7 +91,7 @@ int kuvaW, kuvaH;
 int kuvaskaala = 2;
 String kuvatiedosto = "data/esimerkkikuva.png"; // "data/redhouse.png"; // "esimerkkikuva.png"; // use data-folder because in application it is not default folder!
 boolean taustakuva0 = true;
-boolean taustakuva = false; // true; // false; // true; //false;   under contruction
+boolean taustakuva = true; //false; // true; // false; // true; //false;   under contruction
 // -------------------------------------------
 
 // -------------------------------------------
@@ -567,6 +578,23 @@ void keyPressed() {
 
   if (key == 'l') {
     laser_draw_line = !laser_draw_line;
+  }
+  
+  
+  if (key == 'L') {
+    print("\nSave as SVG");
+    
+    background(taustavari);
+    taustakuva_redraw(true);
+    
+    String datestr =String.valueOf(year()) + "_" + String.valueOf(String.format("%02d", month())) + "_" + String.valueOf(day()) + String.valueOf(hour()) + String.valueOf(minute()) + String.valueOf(second());
+    beginRecord(SVG, "svg/filename" + datestr + "_" + frameCount + ".svg");
+    
+    for (Viiva viiva : viivat) { 
+      viiva.displayViiva(false);
+    }
+      
+    endRecord();
   }
 
   // -------------------------------------------
