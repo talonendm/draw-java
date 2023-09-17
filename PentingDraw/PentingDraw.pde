@@ -6,6 +6,14 @@ See blog post: https://talonendm.github.io/2021-04-03-draw/
  Error in Processing 4.
  
  tested with 3.5.4 and it works with Huion tablet
+
+GIT: (main branch)
+
+git status
+git add .
+git commit -m "change X"
+git push git@github-talonendm:talonendm/draw-java
+
  
 */
 
