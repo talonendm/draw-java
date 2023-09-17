@@ -89,7 +89,7 @@ ColorPicker cp;
 PImage img;
 int kuvaW, kuvaH;
 int kuvaskaala = 2;
-String kuvatiedosto = "data/esimerkkikuva.png"; // "data/redhouse.png"; // "esimerkkikuva.png"; // use data-folder because in application it is not default folder!
+String kuvatiedosto = "data/jalki.png"; // "data/redhouse.png"; // "esimerkkikuva.png"; // use data-folder because in application it is not default folder!
 boolean taustakuva0 = true;
 boolean taustakuva = true; //false; // true; // false; // true; //false;   under contruction
 // -------------------------------------------
